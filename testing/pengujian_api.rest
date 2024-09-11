@@ -82,7 +82,7 @@ Authorization: {{tokenAdmin}}
 Content-Type: application/json
 
 {
-  "userId": "962e5be5-9ac7-436a-9d7c-393d2af8131c",
+  "id": "962e5be5-9ac7-436a-9d7c-393d2af8131c",
   "month": 4,
   "year": 2024,
   "salary": 6500

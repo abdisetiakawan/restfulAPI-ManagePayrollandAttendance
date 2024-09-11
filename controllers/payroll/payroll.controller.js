@@ -1,4 +1,4 @@
-import { Payroll } from "../../models/index.js";
+import { Payroll, User } from "../../models/index.js";
 
 // Mendapatkan semua data payroll (hanya untuk admin)
 export const getAllPayrolls = async (req, res, next) => {
@@ -15,18 +15,23 @@ export const getAllPayrolls = async (req, res, next) => {
 // Menambahkan data payroll baru (hanya untuk admin)
 export const createPayroll = async (req, res, next) => {
   try {
-    const { userId, month, year, salary } = req.body;
+    const { id, month, year, salary } = req.body;
 
     if (!month || !year || !salary) {
       return res.status(400).json({ message: "Tolong isi semua Form" });
     }
 
-    const [userPayroll] = await Payroll.findAll({ where: { userId } });
+    const [userPayroll] = await User.findAll({ where: { id } });
 
     if (!userPayroll) {
       return res.status(400).json({ message: "ID User Tidak Tersedia!" });
     } else {
-      const newPayroll = await Payroll.create({ userId, month, year, salary });
+      const newPayroll = await Payroll.create({
+        userId: id,
+        month,
+        year,
+        salary,
+      });
       res
         .status(201)
         .json({ message: "Payroll recorded successfully", newPayroll });
