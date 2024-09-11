@@ -9,7 +9,6 @@ import cookieParser from "cookie-parser";
 import logger from "morgan";
 
 // Import routers and config
-import indexRouter from "./routes/index.js";
 import usersRouter from "./routes/users.js";
 import attendanceRouter from "./routes/attendance.js";
 import payrollRouter from "./routes/payroll.js";
@@ -25,7 +24,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Routes
-app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/attendance", attendanceRouter);
 app.use("/payroll", payrollRouter);
@@ -44,7 +42,11 @@ sequelize
 // Set up server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on http://localhost:${3000}`);
+});
+
+app.get("/", (req, res) => {
+  res.send("Selamat datang di API Absensi dan Payroll Karyawan");
 });
 
 // Catch 404 and forward to error handler

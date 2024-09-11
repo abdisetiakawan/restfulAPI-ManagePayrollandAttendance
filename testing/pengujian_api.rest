@@ -1,13 +1,13 @@
-@baseUrl = https://tugas-akhir-dpsi-2200016103-production.up.railway.app
-@tokenAdmin = Bearer <tokenAdmin>
-@tokenKaryawan = Bearer <tokenKaryawan>
+@baseUrl = http://localhost:3000
+@tokenAdmin = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTI0NjVjYi1iNTFlLTQ2N2MtYjQyOS02MGFkZDI1MGU1NzciLCJ1c2VybmFtZSI6ImJva2VyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzI2MDI5MDc5LCJleHAiOjE3MjYwMzI2Nzl9.ztUqkInjx2e2g_dfeWm9EnMVzv7Z_QLh-tRVAYvY8TE
+@tokenKaryawan = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5NjJlNWJlNS05YWM3LTQzNmEtOWQ3Yy0zOTNkMmFmODEzMWMiLCJ1c2VybmFtZSI6ImdhY29yIiwicm9sZSI6Imthcnlhd2FuIiwiaWF0IjoxNzI2MDI5MTI1LCJleHAiOjE3MjYwMzI3MjV9.S9JMUHT087epWndd97_6mPD2VmofURtM0wIq7K9qcBc
 
 ### Menguji POST /auth/register
 POST {{baseUrl}}/auth/register
 Content-Type: application/json
 
 {
-  "username": "abdisetiawan",
+  "username": "boker",
   "password": "password123",
   "role": "admin"
 }
@@ -17,7 +17,25 @@ POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
 {
-  "username": "abdisetiawan",
+  "username": "boker",
+  "password": "password123"
+}
+### Menguji POST /auth/register
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "username": "gacor",
+  "password": "password123",
+  "role": "karyawan"
+}
+
+### Menguji POST /auth/login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "gacor",
   "password": "password123"
 }
 
@@ -41,7 +59,7 @@ Authorization: {{tokenAdmin}}
 Content-Type: application/json
 
 {
-  "id": "65979df7-1783-47ef-9348-a509edcfa34d",
+  "id": "f8ec88d5-e0ec-4103-b250-65be7de2ccf6",
   "status": "leave"
 }
 
@@ -64,7 +82,7 @@ Authorization: {{tokenAdmin}}
 Content-Type: application/json
 
 {
-  "userId": "dda67e56-c215-40e8x-9f41-bd66838974cf",
+  "userId": "962e5be5-9ac7-436a-9d7c-393d2af8131c",
   "month": 4,
   "year": 2024,
   "salary": 6500
@@ -72,7 +90,7 @@ Content-Type: application/json
 
 ### Menguji GET /users
 GET {{baseUrl}}/users
-Authorization: {{tokenKaryawan}}
+Authorization: {{tokenAdmin}}
 
 ### Menguji PUT /users/profile
 PUT {{baseUrl}}/users/profile

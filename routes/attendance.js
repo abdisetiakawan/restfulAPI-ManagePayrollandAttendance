@@ -4,7 +4,7 @@ import {
   createAttendance,
   updateAttendance,
   deleteAttendance,
-} from "../controllers/attendance/attendance.controller.js";
+} from "../controllers/index.js";
 import { authenticateToken, authorizeAdmin } from "../middlewares/index.js";
 
 const router = express.Router();

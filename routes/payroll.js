@@ -1,9 +1,9 @@
 import express from "express";
-import { 
-  getAllPayrolls, 
-  createPayroll, 
-  getPayrollByUser 
-} from "../controllers/payroll/payroll.controller.js";
+import {
+  getAllPayrolls,
+  createPayroll,
+  getPayrollByUser,
+} from "../controllers/index.js";
 import { authenticateToken, authorizeAdmin } from "../middlewares/index.js";
 
 const router = express.Router();
