@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:3000
-@tokenAdmin = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTI0NjVjYi1iNTFlLTQ2N2MtYjQyOS02MGFkZDI1MGU1NzciLCJ1c2VybmFtZSI6ImJva2VyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzI2MDI5MDc5LCJleHAiOjE3MjYwMzI2Nzl9.ztUqkInjx2e2g_dfeWm9EnMVzv7Z_QLh-tRVAYvY8TE
-@tokenKaryawan = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5NjJlNWJlNS05YWM3LTQzNmEtOWQ3Yy0zOTNkMmFmODEzMWMiLCJ1c2VybmFtZSI6ImdhY29yIiwicm9sZSI6Imthcnlhd2FuIiwiaWF0IjoxNzI2MDI5MTI1LCJleHAiOjE3MjYwMzI3MjV9.S9JMUHT087epWndd97_6mPD2VmofURtM0wIq7K9qcBc
+@tokenAdmin = Bearer <tokenAdmin>
+@tokenKaryawan = Bearer <tokenKaryawan>
 
 ### Menguji POST /auth/register
 POST {{baseUrl}}/auth/register
