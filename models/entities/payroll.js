@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from "uuid";
-import { User } from "./index.js";
+import { User } from "../index.js";
 
-const Attendance = (sequelize, DataTypes) => {
-  return sequelize.define("Attendance", {
+const Payroll = (sequelize, DataTypes) => {
+  return sequelize.define("Payroll", {
     id: {
       type: DataTypes.STRING,
       primaryKey: true,
@@ -17,15 +17,19 @@ const Attendance = (sequelize, DataTypes) => {
         key: "id",
       },
     },
-    date: {
-      type: DataTypes.DATEONLY,
+    month: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
-    status: {
-      type: DataTypes.ENUM("present", "absent", "leave", "half-day"),
+    year: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    salary: {
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
   });
 };
 
-export default Attendance;
+export default Payroll;

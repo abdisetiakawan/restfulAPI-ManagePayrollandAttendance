@@ -5,10 +5,10 @@ import { Sequelize } from "sequelize";
 import sequelize from "../config/index.js";
 
 // Import models
-import createUserModel from "./users.js";
-import createUserProfileModel from "./userProfile.js";
-import createAttendanceModel from "./attendance.js";
-import createPayrollModel from "./payroll.js";
+import createUserModel from "./entities/users.js";
+import createUserProfileModel from "./entities/userProfile.js";
+import createAttendanceModel from "./entities/attendance.js";
+import createPayrollModel from "./entities/payroll.js";
 
 // Initialize models
 const User = createUserModel(sequelize, Sequelize.DataTypes);
