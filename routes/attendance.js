@@ -1,7 +1,6 @@
 import express from "express";
 import { Attendance } from "../models/index.js";
-import authenticateToken from "../middleware/authenticateToken.js";
-import authorizeAdmin from "../middleware/authorizeAdmin.js";
+import {authenticateToken, authorizeAdmin} from '../middleware/index.js'
 
 const router = express.Router();
 
