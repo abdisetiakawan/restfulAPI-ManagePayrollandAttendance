@@ -1,67 +1,12 @@
 import express from "express";
-import { User } from "../models/index.js";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
-
-dotenv.config();
+import {
+  registerUser,
+  loginUser,
+} from "../controllers/auth/auth.controller.js";
 
 const router = express.Router();
 
-router.post("/register", async (req, res, next) => {
-  try {
-    const { username, password, role } = req.body;
-    if (!username || !password || !role) {
-      return res
-        .status(400)
-        .json({ message: "Please provide username, password, and role" });
-    }
-    const existingUser = await User.findOne({ where: { username } });
-    if (existingUser) {
-      return res.status(400).json({ message: "Username already exists" });
-    }
-    const newUser = await User.create({ username, password, role });
-    res.status(201).json({ message: "User registered successfully", newUser });
-  } catch (error) {
-    next(error);
-  }
-});
-
-router.post("/login", async (req, res, next) => {
-  try {
-    const { username, password } = req.body;
-    const user = await User.findOne({ where: { username } });
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(400).json({ message: "Incorrect password" });
-    }
-    const userId = user.id;
-    const accessToken = jwt.sign(
-      { userId, username, role: user.role },
-      process.env.ACCESS_TOKEN_SECRET,
-      {
-        expiresIn: "1h",
-      }
-    );
-    const refreshToken = jwt.sign(
-      { userId, username, role: user.role },
-      process.env.REFRESH_TOKEN_SECRET,
-      {
-        expiresIn: "1d",
-      }
-    );
-    await User.update({ refreshToken }, { where: { id: userId } });
-    res.cookie("refreshToken", refreshToken, {
-      httpOnly: true,
-      maxAge: 24 * 60 * 60 * 1000,
-    });
-    res.json({ accessToken });
-  } catch (error) {
-    next(error);
-  }
-});
+router.post("/register", registerUser);
+router.post("/login", loginUser);
 
 export default router;

@@ -1,6 +1,6 @@
 import express from "express";
 import { User, UserProfile } from "../models/index.js";
-import { authenticateToken, authorizeAdmin } from "../middleware/index.js";
+import { authenticateToken, authorizeAdmin } from "../middlewares/index.js";
 
 const router = express.Router();
 
