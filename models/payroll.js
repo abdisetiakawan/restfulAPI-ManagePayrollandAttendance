@@ -1,5 +1,5 @@
-const { v4: uuidv4 } = require("uuid");
-const { User } = require("./index");
+import { v4 as uuidv4 } from "uuid";
+import { User } from "./index.js";
 
 const Payroll = (sequelize, DataTypes) => {
   return sequelize.define("Payroll", {
@@ -32,4 +32,4 @@ const Payroll = (sequelize, DataTypes) => {
   });
 };
 
-module.exports = Payroll;
+export default Payroll;

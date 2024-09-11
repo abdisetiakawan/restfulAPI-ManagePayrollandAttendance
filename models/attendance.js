@@ -1,5 +1,5 @@
-const { v4: uuidv4 } = require("uuid");
-const { User } = require("./index");
+import { v4 as uuidv4 } from "uuid";
+import { User } from "./index.js";
 
 const Attendance = (sequelize, DataTypes) => {
   return sequelize.define("Attendance", {
@@ -28,4 +28,4 @@ const Attendance = (sequelize, DataTypes) => {
   });
 };
 
-module.exports = Attendance;
+export default Attendance;

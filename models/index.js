@@ -1,13 +1,20 @@
-const Sequelize = require("sequelize");
-require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 
-const sequelize = require("../config/index");
+import { Sequelize } from "sequelize";
+import sequelize from "../config/index.js";
 
 // Import models
-const User = require("./users")(sequelize, Sequelize.DataTypes);
-const UserProfile = require("./userProfile")(sequelize, Sequelize.DataTypes);
-const Attendance = require("./attendance")(sequelize, Sequelize.DataTypes);
-const Payroll = require("./payroll")(sequelize, Sequelize.DataTypes);
+import createUserModel from "./users.js";
+import createUserProfileModel from "./userProfile.js";
+import createAttendanceModel from "./attendance.js";
+import createPayrollModel from "./payroll.js";
+
+// Initialize models
+const User = createUserModel(sequelize, Sequelize.DataTypes);
+const UserProfile = createUserProfileModel(sequelize, Sequelize.DataTypes);
+const Attendance = createAttendanceModel(sequelize, Sequelize.DataTypes);
+const Payroll = createPayrollModel(sequelize, Sequelize.DataTypes);
 
 // Define associations
 User.hasOne(UserProfile, { foreignKey: "userId" });
@@ -19,4 +26,4 @@ Attendance.belongsTo(User, { foreignKey: "userId" });
 User.hasMany(Payroll, { foreignKey: "userId" });
 Payroll.belongsTo(User, { foreignKey: "userId" });
 
-module.exports = { User, UserProfile, Attendance, Payroll };
+export { User, UserProfile, Attendance, Payroll };

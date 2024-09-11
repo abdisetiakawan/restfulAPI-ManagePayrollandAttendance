@@ -1,4 +1,4 @@
-const { v4: uuidv4 } = require("uuid");
+import { v4 as uuidv4 } from "uuid";
 
 const UserProfile = (sequelize, DataTypes) => {
   const UserProfile = sequelize.define(
@@ -14,7 +14,7 @@ const UserProfile = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         references: {
-          model: "Users", // Menggunakan nama model secara langsung untuk menghindari circular dependency
+          model: "Users",
           key: "id",
         },
       },
@@ -48,14 +48,15 @@ const UserProfile = (sequelize, DataTypes) => {
       },
     },
     {
-      timestamps: true, // Mengaktifkan timestamps pada model ini
+      timestamps: true,
     }
   );
-  // Menambahkan getter fullName
+
   UserProfile.prototype.fullName = function () {
     return `${this.firstName} ${this.lastName}`;
   };
+
   return UserProfile;
 };
 
-module.exports = UserProfile;
+export default UserProfile;
