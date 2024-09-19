@@ -1,6 +1,4 @@
 
----
-
 # restAPI-ManagePayrollandAttendance
 
 This project is a RESTful API for managing payroll and attendance using Node.js, Express.js, MySQL, and JWT for authentication. It includes features for managing employees, attendance records, and payroll information.
