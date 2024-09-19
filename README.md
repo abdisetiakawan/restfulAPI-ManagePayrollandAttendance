@@ -18,7 +18,7 @@ This project is a RESTful API for managing payroll and attendance using Node.js,
 Clone this repository to your local machine using Git Bash or any other terminal:
 
 ```bash
-https://github.com/abdisetiakawan/restAPI-ManagePayrollandAttendance
+git clone https://github.com/abdisetiakawan/restAPI-ManagePayrollandAttendance
 ```
 
 ### 2. Install Dependencies
